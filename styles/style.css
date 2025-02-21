@@ -355,6 +355,7 @@ position: absolute;
   line-height: 1.3125em;
   grid-row: 1 / 1;
   grid-column: 2 / 2;
+  border: var(--border-width) var(--border-line) var(--border-color);
 }
 
 .modal__close-button {
