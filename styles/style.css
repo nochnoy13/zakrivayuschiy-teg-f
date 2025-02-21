@@ -367,7 +367,7 @@ position: absolute;
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
-  min-block-size: 38px;
+  block-size: 38px;
 }
 
 .modal__close-button::before {
