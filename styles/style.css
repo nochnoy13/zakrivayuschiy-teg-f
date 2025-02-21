@@ -450,6 +450,6 @@ position: absolute;
   .modal__window-container[open] {
     gap: 21px 32px;
     padding: 30px 42px;
-    min-block-size: 195px;
+    block-size: 195px;
   }
 }
