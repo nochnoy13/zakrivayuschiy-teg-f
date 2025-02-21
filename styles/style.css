@@ -354,8 +354,7 @@ position: absolute;
   text-transform: uppercase;
   line-height: 1.3125em;
   grid-row: 1 / 1;
-  grid-column: 2 / 2;
-  border: var(--border-width) var(--border-line) var(--border-color);
+  grid-column: 2 / ;
 }
 
 .modal__close-button {
@@ -368,6 +367,7 @@ position: absolute;
   cursor: pointer;
   position: relative;
   block-size: 38px;
+  border: var(--border-width) var(--border-line) var(--border-color);
 }
 
 .modal__close-button::before {
@@ -394,7 +394,7 @@ position: absolute;
   }
   }
 
-@media (width <= 375px) {
+@media (width <= 376px) {
 
   .header {
     display: flex;
