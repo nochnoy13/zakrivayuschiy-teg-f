@@ -205,63 +205,65 @@ position: absolute;
 }
 
 /*начало стилей сердца*/
-.core {
-  color: var(--like-button-core);
-  transition: fill 0.3s ease-in-out both;
-  transition-delay: 0.05s;
+.main-body {
+  color: var(--like-button-main-body);
 }
 
 .contur {
   color: var(--like-button-contur); 
 }
 
-.main-body {
-  color: var(--like-button-main-body);
-  transition: fill 0.3s ease both;
+.core {
+  color: var(--like-button-core);
 }
 
 .sparks {
   color: var(--like-button-sparks);
 }
 
-/*конец стилей сердца*/
+/* конец стилей сердца */
 
-/*начало стиллей анимации серодца*/
+
+/* начало стиллей анимации серодца */
 
 .like-icon:hover .core {
   --like-button-core: rgb(0 0 0 / 1);
+  transition: fill 0.3s ease-in-out both;
 }
 
 .like-icon:hover .main-body {
   --like-button-main-body: rgb(0 0 0 / 1);
+  transition: fill 0.3s ease-in-out both;
+  transition-delay: 0.05s;
+}
+
+.like-icon:not(:hover) .main-body {
+  --like-button-main-body: rgb(0 0 0 / 0);
+  transition: fill 0.3s ease-in-out both;
 }
 
 .like-icon:not(:hover) .core {
   --like-button-core: rgb(0 0 0 / 0);
   transition: fill 0.3s ease-in-out both;
-}
-
-.like-icon:not(:hover) .main-body {
-  --like-button-main-body: rgb(0 0 0 / 0);
-  transition: fill 0.5s ease-in-out both;
   transition-delay: 0.03s;
 }
 
-.like-icon:active .core,
-.like-icon:active .main-body {
-  --like-button-main-body: rgb(255 37 0 / 1);
+.like-icon:active .main-body,
+.like-icon:active .core {
   --like-button-core: rgb(255 37 0 / 1);
-  transition: fill 0.5s ease-in-out both;
+  --like-button-main-body: rgb(255 37 0 / 1);
+  transition: fill 0.3s ease-in-out both;
 }
 
 .like-icon.is-liked .core {
   --like-button-core: rgb(255 37 0 / 1);
-  transition: fill 0.5s ease-in-out both;
+  transition: fill 0.3s ease-in-out both;
 }
+
 .like-icon.is-liked .main-body {
   --like-button-main-body: rgb(255 37 0 / 1);
-  transition: fill 0.5s ease-in-out both;
-  transition-delay: 0.03s;
+  transition: fill 0.3s ease-in-out both;
+  transition-delay: 0.05s;
 }
 
 .like-icon.is-liked .contur {
@@ -271,7 +273,7 @@ position: absolute;
 }
 
 .like-icon.is-liked {
-  animation: big-heart 0.4s ease-in-out both;
+  animation: big-heart 0.4s ease-in both;
   animation-delay: 0.04s;
 }
 /*конец стиллей анимации серодца*/
@@ -334,6 +336,7 @@ position: absolute;
   inline-size: clamp(341px, calc(100vw - 75.4861vw), 353px);
   padding: 30px;
   min-block-size: 193px;
+}
 
 .modal__window-container::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
@@ -344,6 +347,7 @@ position: absolute;
   grid-row: 1/ 1;
   inline-size: 39px;
   block-size: 39px;
+  align-self: center;
 }
 
 .modal__close-button-text {
@@ -391,62 +395,61 @@ position: absolute;
 
 @media (width <= 375px) {
 
-.header {
-  display: flex;
-  flex-direction: column;
-  margin: 100px auto;
-  inline-size: clamp(375px, calc(100vw - 51.3989vh), 700px);
-  block-size: calc(100vh - 50.9745vh);
-  background-color: var(--background-color);
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  border: var(--border-width) var(--border-line) var(--border-color);
-}
-
-.card-title {
-padding-top: 5px;
-}
-
-.floppy-container {
-  inline-size: 28px;
-  block-size: 28px;
-}
-
-.image-container {
-  margin-top: 3px;
-}
-
-.image-container p {
-  margin: 23px 10px;
-}
-
-.main-container {
-  gap: 50px;
-}
-
-.card-description {
-  line-height: 1.17;
-}
-
-.footer__button-container {
-  flex-direction: column;
-  min-inline-size: 310px;
-  min-block-size: 84px;
-}
-
-  .footer_container {
-    margin: 52px auto 63px;
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+    inline-size: clamp(375px, calc(100vw - 51.3989vh), 700px);
+    block-size: calc(100vh - 50.9745vh);
+    background-color: var(--background-color);
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: var(--border-width) var(--border-line) var(--border-color);
   }
 
-  .page {
-    background-repeat: repeat;
+  .card-title {
+  padding-top: 5px;
   }
 
-.modal__window-container[open] {
-  gap: 21px 32px;
-  padding: 30px 42px;
-  min-block-size: 195px;
-}
+  .floppy-container {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 
+  .image-container {
+    margin-top: 3px;
+  }
+
+  .image-container p {
+    margin: 23px 10px;
+  }
+
+  .main-container {
+    gap: 50px;
+  }
+
+  .card-description {
+    line-height: 1.17;
+  }
+
+  .footer__button-container {
+    flex-direction: column;
+    min-inline-size: 310px;
+    min-block-size: 84px;
+  }
+
+    .footer_container {
+      margin: 52px auto 63px;
+    }
+
+    .page {
+      background-repeat: repeat;
+    }
+
+  .modal__window-container[open] {
+    gap: 21px 32px;
+    padding: 30px 42px;
+    min-block-size: 195px;
+  }
 }
