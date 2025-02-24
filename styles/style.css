@@ -90,6 +90,7 @@
   font-size: 18px;
   margin: 25px 25px 0;
   line-height: 1.189;
+  font-variation-settings: "wght" var(--standart-font-weight-bold);
 }
 
 .image-container {
@@ -114,7 +115,6 @@
   margin: 25px 25px;
   mix-blend-mode: hard-light;
   text-wrap: nowrap;
-  font-variation-settings: "wght" var(--standart-font-weight-bold);
 }
 
 .text-outline {
@@ -225,6 +225,7 @@
 
 .contur {
   color: var(--like-button-contur);
+  transition: fill 0.1s linear;
 }
 
 .core {
@@ -261,10 +262,14 @@
   transition-delay: 0.03s;
 }
 
-.like-icon:active .main-body,
+.like-icon:active .main-body {
+  --like-button-main-body: rgb(255 37 0 / 1);
+  transition: fill 0.3s linear both;
+  transition-delay: 0.03s;
+}
+
 .like-icon:active .core {
   --like-button-core: rgb(255 37 0 / 1);
-  --like-button-main-body: rgb(255 37 0 / 1);
   transition: fill 0.3s linear both;
 }
 
@@ -281,7 +286,7 @@
 
 .like-icon.is-liked .contur {
   --like-button-contur: rgb(255 37 0 / 1);
-  transition: fill 0.5s linear both;
+  transition: fill 0.3s linear;
   transition-delay: 0.06s;
 }
 
@@ -341,7 +346,7 @@
   align-self: center;
 }
 
-.modal__close-button-text {
+.modal__description {
   text-transform: uppercase;
   line-height: 1.3125em;
   grid-row: 1 / 1;
@@ -393,6 +398,10 @@
     min-block-size: 84px;
   }
 
+  .modal__description {
+    word-spacing: -5px;
+  }
+
   .footer_container {
     margin: 52px auto 63px;
   }
@@ -402,7 +411,6 @@
   }
 
   .modal__window-container[open] {
-    gap: 21px 32px;
     padding: 30px 42px;
   }
 }
