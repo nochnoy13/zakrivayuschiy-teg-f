@@ -12,12 +12,13 @@
 
 .page {
   min-block-size: 100vh;
-  font-family: var(--standart-font), sans-serif;
+  font-family: var(--standart-font), Arial, Helvetica, sans-serif;
   font-variation-settings: "wght" var(--standart-font-weight);
   background-image: var(--background);
   background-size: cover;
   background-repeat: no-repeat;
   cursor: default;
+  background-attachment: fixed;
 }
 
 .header {
@@ -34,7 +35,7 @@
 }
 
 .title {
-  font-family: var(--decorated-font), serif;
+  font-family: var(--decorated-font), fantasy, Georgia, Times, serif;
   font-size: clamp(
     3.0625em,
     calc(3.0625rem + ((1vw - 0.234375em) * 1.5023)),
@@ -44,7 +45,7 @@
 }
 
 .title-descriprion {
-  font-family: var(--decorated-font), serif;
+  font-family: var(--decorated-font), fantasy, Georgia, Times, serif;
   font-size: clamp(
     0.875em,
     calc(0.875rem + ((1vw - 0.234375em) * 0.8451)),
@@ -104,7 +105,7 @@
 }
 
 .image-container p {
-  font-family: var(--decorated-font), sans-serif;
+  font-family: var(--decorated-font), fantasy, Georgia, Times, serif;
   font-size: 14px;
   grid-column: 2;
   grid-row: 1;
@@ -142,6 +143,7 @@
   display: flex;
   margin: 25px 25px;
   align-self: end;
+  gap: 6px;
 }
 
 .all-buttons {
@@ -183,7 +185,7 @@
 }
 
 .button__text {
-  font-family: var(--decorated-font), serif;
+  font-family: var(--decorated-font), fantasy, Georgia, Times, serif;
   font-size: 14px;
   z-index: 2;
   position: relative;
@@ -197,6 +199,10 @@
   border: 2px solid rgb(0 0 0 / 0);
   transition: border 0.3s ease;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-top: 1px;
 }
 
 .card__icon-button:focus {
@@ -209,7 +215,7 @@
 
 .like-icon {
   cursor: pointer;
-  width: 34px;
+  width: 36px;
 }
 
 /*начало стилей сердца*/
@@ -351,17 +357,10 @@
   block-size: 38px;
 }
 
-@media (width <= 930px) {
-  .image-container p {
-    margin: 13px 13px;
-  }
-}
-
 @media (width <= 376px) {
-
   .header {
     padding: 7.5em 0;
-    }
+  }
 
   .card-title {
     padding-top: 5px;
