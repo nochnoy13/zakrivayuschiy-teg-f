@@ -25,7 +25,7 @@
   flex-direction: column;
   margin: 100px auto;
   inline-size: clamp(375px, calc(100vw - 51.3989vh), 700px);
-  block-size: clamp(368px, calc(100vh - 61.6667vh), 368.1px);
+  padding: 8em 0;
   background-color: var(--background-color);
   align-items: center;
   justify-content: center;
@@ -35,13 +35,21 @@
 
 .title {
   font-family: var(--decorated-font), serif;
-  font-size: clamp(3.0625em, calc(3.0625rem + ((1vw - 0.234375em) * 1.5023)), 4.0625em);
+  font-size: clamp(
+    3.0625em,
+    calc(3.0625rem + ((1vw - 0.234375em) * 1.5023)),
+    4.0625em
+  );
   text-transform: uppercase;
 }
 
 .title-descriprion {
   font-family: var(--decorated-font), serif;
-  font-size: clamp(0.875em, calc(0.875rem + ((1vw - 0.234375em) * 0.8451)), 1.4375em);
+  font-size: clamp(
+    0.875em,
+    calc(0.875rem + ((1vw - 0.234375em) * 0.8451)),
+    1.4375em
+  );
   text-transform: lowercase;
 }
 
@@ -89,14 +97,14 @@
   grid-template-columns: 1fr 1fr;
   position: relative;
   border-top: var(--border-width) var(--border-line) var(--border-color);
-  border-bottom: var(--border-width) var(--border-line) var(--border-color);  
+  border-bottom: var(--border-width) var(--border-line) var(--border-color);
   box-sizing: border-box;
   overflow: hidden;
   margin-top: 5px;
 }
 
 .image-container p {
-  font-family: var(--decorated-font);
+  font-family: var(--decorated-font), sans-serif;
   font-size: 14px;
   grid-column: 2;
   grid-row: 1;
@@ -105,24 +113,26 @@
   margin: 25px 25px;
   mix-blend-mode: hard-light;
   text-wrap: nowrap;
+  font-variation-settings: "wght" var(--standart-font-weight-bold);
 }
 
-.text-stroke {
-text-shadow:
-1px 1px 0px var(--text-stroke-color),
--1px 1px 0px var(--text-stroke-color),
--1px -1px 0 var(--text-stroke-color),
-1px -1px 0 var(--text-stroke-color);
+.text-outline {
+  text-shadow: 1px 1px 0px var(--text-stroke-color),
+    -1px 1px 0px var(--text-stroke-color), -1px -1px 0 var(--text-stroke-color),
+    1px -1px 0 var(--text-stroke-color);
 }
 
-@supports (-webkit-text-stroke: 2px var(--text-stroke-color)) {
-  .text-stroke {
-  -webkit-text-stroke: 1px var(--text-stroke-color);
+@supports (-webkit-text-stroke: 2px rgba(206, 206, 206, 0.5)) {
+  .text-outline {
+    -webkit-text-stroke: 2px var(--text-stroke-color);
+    text-shadow: none;
   }
 }
 
 .image {
   width: 100%;
+  object-fit: contain;
+  object-position: center;
   position: relative;
   grid-column: 1 / 3;
   grid-row: 1 / 3;
@@ -130,23 +140,27 @@ text-shadow:
 
 .card-buttons-container {
   display: flex;
-  justify-content: end;
   margin: 25px 25px;
-  align-items: center;
+  align-self: end;
+}
+
+.all-buttons {
+  border: var(--border-width) var(--border-line) var(--border-color);
+  background-color: inherit;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 0 currentColor;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .card__like-button {
-  border: var(--border-width) var(--border-line) var(--border-color);
-  background-color: inherit;
   min-inline-size: 130px;
   min-block-size: 38px;
-  align-self: end;
-  position: relative;
-  cursor: pointer;
+  align-self: center;
 }
 
-.card__like-button::before {
-  content:"";
+.all-buttons::before {
+  content: "";
   position: absolute;
   z-index: 1;
   min-inline-size: 100%;
@@ -159,49 +173,43 @@ text-shadow:
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::before {
+.all-buttons:hover::before {
   transform: scaleX(1);
 }
 
-.card__like-button:focus,
-.footer__button-container:focus,
-.modal__close-button:focus {
+.all-buttons:focus {
   box-shadow: 2px 2px 0 currentColor;
-  animation: button-shadow 0.3s;
+  outline: none;
 }
 
 .button__text {
-  font-family: var(--decorated-font);
+  font-family: var(--decorated-font), serif;
   font-size: 14px;
   z-index: 2;
   position: relative;
   mix-blend-mode: difference;
   color: var(--decorated-font-color);
-}
-
-.decorated-button-text {
-  font-family: var(--decorated-font);
-  font-size: 14px;
-  color: var(--decorated-font-color);
-  mix-blend-mode: difference;
-  z-index: 2;
-  position: relative;
 }
 
 .card__icon-button {
-width: 50px;
-border: none;
-background-color: inherit;
-display: flex;
-align-items: center;
-justify-content: center;
+  background-color: inherit;
+  display: flex;
+  border: 2px solid rgb(0 0 0 / 0);
+  transition: border 0.3s ease;
+  box-sizing: border-box;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid currentColor;
 }
 
 .like-icon {
-box-sizing: border-box;
-cursor: pointer;
-width: 38px;
-position: absolute;
+  cursor: pointer;
+  width: 34px;
 }
 
 /*начало стилей сердца*/
@@ -210,7 +218,7 @@ position: absolute;
 }
 
 .contur {
-  color: var(--like-button-contur); 
+  color: var(--like-button-contur);
 }
 
 .core {
@@ -223,28 +231,27 @@ position: absolute;
 
 /* конец стилей сердца */
 
-
 /* начало стиллей анимации серодца */
 
 .like-icon:hover .core {
   --like-button-core: rgb(0 0 0 / 1);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
 }
 
 .like-icon:hover .main-body {
   --like-button-main-body: rgb(0 0 0 / 1);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
   transition-delay: 0.05s;
 }
 
 .like-icon:not(:hover) .main-body {
   --like-button-main-body: rgb(0 0 0 / 0);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
 }
 
 .like-icon:not(:hover) .core {
   --like-button-core: rgb(0 0 0 / 0);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
   transition-delay: 0.03s;
 }
 
@@ -252,37 +259,38 @@ position: absolute;
 .like-icon:active .core {
   --like-button-core: rgb(255 37 0 / 1);
   --like-button-main-body: rgb(255 37 0 / 1);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
 }
 
 .like-icon.is-liked .core {
   --like-button-core: rgb(255 37 0 / 1);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
 }
 
 .like-icon.is-liked .main-body {
   --like-button-main-body: rgb(255 37 0 / 1);
-  transition: fill 0.3s ease-in-out both;
+  transition: fill 0.3s linear both;
   transition-delay: 0.05s;
 }
 
 .like-icon.is-liked .contur {
   --like-button-contur: rgb(255 37 0 / 1);
-  transition: fill 0.5s ease-in-out both;
-  transition-delay: 0.035s;
+  transition: fill 0.5s linear both;
+  transition-delay: 0.06s;
 }
 
 .like-icon.is-liked {
-  animation: big-heart 0.4s ease-in both;
+  animation: big-heart 0.4s linear both;
   animation-delay: 0.04s;
 }
+
 /*конец стиллей анимации серодца*/
 
-.footer_container {
+.bottom__container {
   display: flex;
   justify-content: center;
   background-color: inherit;
-  margin: 50px auto 63px;
+  margin: auto auto 63px;
   inline-size: clamp(375px, calc(100vw - 51.3989vh), 700px);
 }
 
@@ -294,7 +302,6 @@ position: absolute;
   z-index: 2;
 }
 
-
 .footer__button-container {
   display: flex;
   flex-wrap: wrap;
@@ -302,29 +309,8 @@ position: absolute;
   justify-content: center;
   min-inline-size: 335px;
   min-block-size: 51px;
-  border: var(--border-width) var(--border-line) var(--border-color);
   background-color: var(--background-color);
   gap: 8px;
-  cursor: pointer;
-  position: relative;
-}
-
-.footer__button-container::before {
-  content:"";
-  position: absolute;
-  z-index: 1;
-  min-inline-size: 100%;
-  min-block-size: 100%;
-  top: 0;
-  left: 0;
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.footer__button-container:hover::before {
-  transform: scaleX(1);
 }
 
 .modal__window-container[open] {
@@ -335,7 +321,6 @@ position: absolute;
   gap: 30px 20px;
   inline-size: clamp(341px, calc(100vw - 75.4861vw), 353px);
   padding: 30px;
-  min-block-size: 193px;
 }
 
 .modal__window-container::backdrop {
@@ -354,7 +339,7 @@ position: absolute;
   text-transform: uppercase;
   line-height: 1.3125em;
   grid-row: 1 / 1;
-  grid-column: 2 / ;
+  grid-column: 2;
 }
 
 .modal__close-button {
@@ -362,55 +347,24 @@ position: absolute;
   grid-column: 1 / 3;
   justify-self: center;
   inline-size: 100%;
-  background-color: transparent;
   text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
   block-size: 38px;
-  border: var(--border-width) var(--border-line) var(--border-color);
-}
-
-.modal__close-button::before {
-  content:"";
-  position: absolute;
-  z-index: 1;
-  min-inline-size: 100%;
-  min-block-size: 100%;
-  top: 0;
-  left: 0;
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.modal__close-button:hover::before {
-  transform: scaleX(1);
 }
 
 @media (width <= 930px) {
   .image-container p {
     margin: 13px 13px;
   }
-  }
+}
 
 @media (width <= 376px) {
 
   .header {
-    display: flex;
-    flex-direction: column;
-    margin: 100px auto;
-    inline-size: clamp(375px, calc(100vw - 51.3989vh), 700px);
-    block-size: calc(100vh - 50.9745vh);
-    background-color: var(--background-color);
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    border: var(--border-width) var(--border-line) var(--border-color);
-  }
+    padding: 7.5em 0;
+    }
 
   .card-title {
-  padding-top: 5px;
+    padding-top: 5px;
   }
 
   .floppy-container {
@@ -440,17 +394,48 @@ position: absolute;
     min-block-size: 84px;
   }
 
-    .footer_container {
-      margin: 52px auto 63px;
-    }
+  .footer_container {
+    margin: 52px auto 63px;
+  }
 
-    .page {
-      background-repeat: repeat;
-    }
+  .page {
+    background-repeat: repeat;
+  }
 
   .modal__window-container[open] {
     gap: 21px 32px;
     padding: 30px 42px;
-    block-size: 195px;
   }
 }
+/* фильтры начло */
+
+.filter__grayscale {
+  filter: grayscale(80%) brightness(130%) contrast(90%);
+}
+
+.filter__invert {
+  filter: invert(100%) brightness(80%) contrast(80%);
+}
+
+.filter__saturate {
+  filter: saturate(390%) brightness(110%);
+}
+
+.fllter__hue-rotate {
+  filter: hue-rotate(0.1turn);
+}
+
+.filter__sepia {
+  filter: sepia(0.9);
+}
+
+.filter__blur {
+  filter: blur(20px);
+}
+
+.fllter__hue-rotate-pink {
+  filter: hue-rotate(0.3turn) blur(3px) contrast(50%) saturate(150%)
+    grayscale(10%);
+}
+
+/* фильтры конец */

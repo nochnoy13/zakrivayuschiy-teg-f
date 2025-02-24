@@ -10,7 +10,7 @@
 
 */
 
-@keyframes button-shadow {
+/* @keyframes button-shadow {
     from {
         box-shadow: 0 0 0 currentColor;
     }
@@ -18,20 +18,20 @@
     to {
         box-shadow: 2px 2px 0 currentColor;
     }
-}
+} */
 
 @keyframes big-heart {
     from {
-        width: 38px;
+        transform: scale(1);
     }
 
     50% {
-        width: 42px;
+        transform: scale(1.2);
         --like-button-sparks: rgb(255 37 0 / 1);
     }
 
     75% {
-        width: 38px;
+        transform: scale(1);
         --like-button-sparks: rgb(255 37 0 / 1);
     }
 
